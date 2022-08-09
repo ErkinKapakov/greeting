@@ -7,18 +7,18 @@ import java.util.List;
 public interface CrudMethods<T> {
 
     @GetMapping("/all")
-    public List<T> findAll();
+    List<T> findAll();
 
     @GetMapping("/{id}")
-    public T getById(@PathVariable Long id);
+    T getById(@PathVariable Long id);
 
     @PostMapping("/save")
-    public T save(@RequestBody T t);
+    T save(@RequestBody T t);
 
     @PutMapping("/update")
-    public T update(@RequestBody T t);
+    T update(@RequestBody T t);
 
     @DeleteMapping("/delete")
-    public T remove(@PathVariable Long id);
+    T remove(@PathVariable Long id);
 
 }
