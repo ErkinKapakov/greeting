@@ -1,5 +1,6 @@
 package kg.megacom.greeting.controllers;
 
+import kg.megacom.greeting.controllers.base.CrudMethods;
 import kg.megacom.greeting.models.Position;
 import org.springframework.web.bind.annotation.*;
 
@@ -8,34 +9,34 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/position")
-public class PositionController {
+public class PositionController implements CrudMethods<Position> {
 
-    @GetMapping("/all")
+    @Override
     public List<Position> findAll(){
-        return Arrays.asList(new Position(1l, "Manager", true),
-                            new Position(2l, "Ceo", true),
-                            new Position(3l, "Middle", true),
-                            new Position(4l, "Junior", true));
+        return Arrays.asList(new Position(1L, "Manager", true),
+                            new Position(2L, "Ceo", true),
+                            new Position(3L, "Middle", true),
+                            new Position(4L, "Junior", true));
     }
 
-    @GetMapping("/{id}")
+    @Override
     public Position getById(@PathVariable Long id){
         return new Position(id, "Ceo", true);
     }
 
-    @PostMapping("/save")
+    @Override
     public Position save(@RequestBody Position position){
-        position.setId(100l);
+        position.setId(100L);
         return position;
     }
 
-    @PutMapping
+    @Override
     public Position update(@RequestBody Position position){
-        position.setName("New Name");
+        position.setName("New position");
         return position;
     }
 
-    @DeleteMapping
+    @Override
     public Position remove(@PathVariable Long id){
         return new Position(id, "Head", true);
     }
