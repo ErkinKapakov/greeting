@@ -24,22 +24,22 @@ public class DepartmentController implements CrudMethods<Department> {
     }
 
     @Override
-    public Optional<Department> getById(Long id) {
+    public Optional<Department> getById(@PathVariable Long id) {
         return departmentService.findById(id);
     }
 
     @Override
-    public Department save(Department department) {
+    public Department save(@RequestBody Department department) {
         return departmentService.save(department);
     }
 
     @Override
-    public Department update(Department department) {
+    public Department update(@RequestBody Department department) {
         return departmentService.save(department);
     }
 
     @Override
-    public void deleteById(Long id) {
+    public void deleteById(@PathVariable Long id) {
         departmentService.deleteById(id);
     }
 }

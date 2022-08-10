@@ -5,6 +5,7 @@ import kg.megacom.greeting.models.Department;
 import kg.megacom.greeting.models.Position;
 import kg.megacom.greeting.services.CrudService;
 import net.bytebuddy.dynamic.DynamicType;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.Optional;
 @Service
 public class DepartmentServiceImpl implements CrudService<Department> {
 
+    @Autowired
     private DepartmentRepository departmentRepository;
 
     @Override

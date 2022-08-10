@@ -19,7 +19,7 @@ public interface CrudMethods<T> {
     @PutMapping("/update")
     T update(@RequestBody T t);
 
-    @DeleteMapping("/delete")
+    @DeleteMapping("/delete:{id}")
     void deleteById(@PathVariable Long id);
 
 }
