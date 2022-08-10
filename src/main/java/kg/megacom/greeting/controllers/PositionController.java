@@ -2,7 +2,7 @@ package kg.megacom.greeting.controllers;
 
 import kg.megacom.greeting.controllers.base.CrudMethods;
 import kg.megacom.greeting.models.Position;
-import kg.megacom.greeting.services.PositionService;
+import kg.megacom.greeting.services.impl.PositionServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,13 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/position")
 public class PositionController implements CrudMethods<Position> {
 
     @Autowired
-    private PositionService positionService;
+    private PositionServiceImpl positionService;
 
     @Override
     public List<Position> findAll(){
@@ -24,8 +25,8 @@ public class PositionController implements CrudMethods<Position> {
     }
 
     @Override
-    public Position getById(@PathVariable Long id){
-        return new Position(id, "Ceo", true);
+    public Optional<Position> getById(@PathVariable Long id){
+        return positionService.findById(id);
     }
 
     @Override
@@ -39,7 +40,7 @@ public class PositionController implements CrudMethods<Position> {
     }
 
     @Override
-    public Position remove(@PathVariable Long id){
-        return new Position(id, "Head", true);
+    public void deleteById(@PathVariable Long id){
+        positionService.deleteById(id);
     }
 }

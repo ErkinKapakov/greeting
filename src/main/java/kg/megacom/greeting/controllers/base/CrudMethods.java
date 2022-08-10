@@ -3,6 +3,7 @@ package kg.megacom.greeting.controllers.base;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface CrudMethods<T> {
 
@@ -10,7 +11,7 @@ public interface CrudMethods<T> {
     List<T> findAll();
 
     @GetMapping("/{id}")
-    T getById(@PathVariable Long id);
+    Optional<T> getById(@PathVariable Long id);
 
     @PostMapping("/save")
     T save(@RequestBody T t);
@@ -19,6 +20,6 @@ public interface CrudMethods<T> {
     T update(@RequestBody T t);
 
     @DeleteMapping("/delete")
-    T remove(@PathVariable Long id);
+    void deleteById(@PathVariable Long id);
 
 }
